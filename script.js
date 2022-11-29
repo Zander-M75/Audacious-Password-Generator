@@ -12,3 +12,38 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+//4 seperate strings**
+var characters = "0123456789" + "ABCDEFGHIJKLMNOPQURSTUVXYZ" + "abcdefghijklmonpqrstuvwxyz" + "!@#$%^&*()"
+
+var maxLength = 128
+var minLength = 8
+
+// prompt("Please Choose Password Lenth Between 8-128 Characters");
+
+
+function generatePassword(){
+  var passwordLength = 10
+  var containsLowerCase = true
+  var containsUpperCase = false
+  var containsNumbers = true
+  var containsSymbols = false
+  var characters = "" 
+  characters += "0123456789" 
+  characters += "ABCDEFGHIJKLMNOPQURSTUVXYZ" 
+  characters += "abcdefghijklmonpqrstuvwxyz" 
+  characters += "!@#$%^&*()"
+
+  var password = "";
+  for (var length = 0; length < passwordLength; length += 1){
+    var randomIndex = Math.floor(Math.random() * characters.length);
+    password += characters[randomIndex];
+  }
+ 
+  return password;
+  
+}
+
+
+//
+
