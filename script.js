@@ -29,7 +29,7 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword(){
 
   var passwordLength = prompt("How many characters would you like in your password? Please select a number between 8 and 128", "type a number between 8-128" || null);
-    // set this to prompt('how many charactersdo you want in password?') => 'some' || null
+   
     console.log(generatePassword);
  
   var containsLowerCase = confirm("Would you like your password to include lowercase characters?");
@@ -46,7 +46,8 @@ function generatePassword(){
   var maxLength = 128;
   var minLength = 8;
 
-  if(minLength < passwordLength && maxLength < password)
+  if(minLength < passwordLength && maxLength < password){
+  } else alert("Please select a number within the character range");
 
   if (containsLowerCase) {
     charactersToIncludeInPassword += lowerCharacters;
