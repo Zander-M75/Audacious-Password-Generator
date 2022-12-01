@@ -63,7 +63,7 @@ function generatePassword(){
   }
   //...
   // charactersToInclude => "0123456789ABCDEFGHIJKLMNOPQURSTUVXYZ"
-  //then lets grab a random index of the string based on the desired length of the password.
+  //grab a random index of the string based on the desired length of the password.
 var charactersToInclude = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()"
 
 // WHEN I answer each prompt
