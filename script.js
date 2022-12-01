@@ -14,35 +14,76 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-var characters = "0123456789" + "ABCDEFGHIJKLMNOPQURSTUVXYZ" + "abcdefghijklmonpqrstuvwxyz" + "!@#$%^&*()"
+// var characters = "0123456789" + "ABCDEFGHIJKLMNOPQURSTUVXYZ" + "abcdefghijklmonpqrstuvwxyz" + "!@#$%^&*()"
 
-var maxLength = 128
-var minLength = 8
-
-
-
-
+// GIVEN I need a new, secure password
+// WHEN I click the button to generate a password
+// THEN I am presented with a series of prompts for password criteria
+// WHEN prompted for password criteria
+// THEN I select which criteria to include in the password
+// WHEN prompted for the length of the password
+// THEN I choose a length of at least 8 characters and no more than 128 characters
+// WHEN asked for character types to include in the password
+// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+  
 function generatePassword(){
-  var passwordLength = 10
-  var containsLowerCase = true
-  var containsUpperCase = true
-  var containsNumbers = true
-  var containsSymbols = true
-  var characters = "" 
-  characters += "0123456789" 
-  characters += "ABCDEFGHIJKLMNOPQURSTUVXYZ" 
-  characters += "abcdefghijklmonpqrstuvwxyz" 
-  characters += "!@#$%^&*()"
+
+  var passwordLength = prompt("How many characters would you like in your password? Please select a number between 8 and 128", "type a number between 8-128" || null);
+    // set this to prompt('how many charactersdo you want in password?') => 'some' || null
+    console.log(generatePassword);
+ 
+  var containsLowerCase = confirm("Would you like your password to include lowercase characters?");
+  var containsUpperCase = confirm("Would you like your password to include uppercase chacaters?");
+  var containsNumbers = confirm("Would you like your password to include numbers?");
+  var containsSymbols = confirm("Would you like your password to include symbols?");
+  
+  var charactersToIncludeInPassword = "" 
+  
+  var numericCharacters = "0123456789" ;
+  var upperCharacters = "ABCDEFGHIJKLMNOPQURSTUVXYZ";
+  var lowerCharacters = "abcdefghijklmonpqrstuvwxyz" ;
+  var specialCharacters = "!@#$%^&*()";
+  var maxLength = 128;
+  var minLength = 8;
+
+  if(minLength < passwordLength && maxLength < password)
+
+  if (containsLowerCase) {
+    charactersToIncludeInPassword += lowerCharacters;
+  }
+  if (containsUpperCase) {
+    charactersToIncludeInPassword+= upperCharacters;
+  }
+  if (containsNumbers) {
+    charactersToIncludeInPassword += numericCharacters;
+  }
+  if (containsSymbols) {
+    charactersToIncludeInPassword += specialCharacters;
+  }
+  //...
+  // charactersToInclude => "0123456789ABCDEFGHIJKLMNOPQURSTUVXYZ"
+  //then lets grab a random index of the string based on the desired length of the password.
+var charactersToInclude = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()"
+
+// WHEN I answer each prompt
+// THEN my input should be validated and at least one character type should be selected
+// WHEN all prompts are answered
+// THEN a password is generated that matches the selected criteria
+// WHEN the password is generated
+// THEN the password is either displayed in an alert or written to the page
 
   var password = "";
   for (var length = 0; length < passwordLength; length += 1){
-    var randomIndex = Math.floor(Math.random() * characters.length);
-    password += characters[randomIndex];
+    var randomIndex = Math.floor(Math.random() * charactersToInclude.length);
+    password += charactersToInclude[randomIndex];
   }
  
   return password;
   
 }
+
+
+
 
 
 
