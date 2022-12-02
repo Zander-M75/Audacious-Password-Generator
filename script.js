@@ -25,62 +25,79 @@ generateBtn.addEventListener("click", writePassword);
 // THEN I choose a length of at least 8 characters and no more than 128 characters
 // WHEN asked for character types to include in the password
 // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-  
-function generatePassword(){
+
+function generatePassword() {
 
   var passwordLength = prompt("How many characters would you like in your password? Please select a number between 8 and 128", "type a number between 8-128" || null);
-   
-    console.log(generatePassword);
- 
-  var containsLowerCase = confirm("Would you like your password to include lowercase characters?");
-  var containsUpperCase = confirm("Would you like your password to include uppercase chacaters?");
-  var containsNumbers = confirm("Would you like your password to include numbers?");
-  var containsSymbols = confirm("Would you like your password to include symbols?");
-  
-  var charactersToIncludeInPassword = "" 
-  
-  var numericCharacters = "0123456789" ;
-  var upperCharacters = "ABCDEFGHIJKLMNOPQURSTUVXYZ";
-  var lowerCharacters = "abcdefghijklmonpqrstuvwxyz" ;
-  var specialCharacters = "!@#$%^&*()";
+
+  console.log(generatePassword);
+
   var maxLength = 128;
   var minLength = 8;
 
-  if(minLength < passwordLength && maxLength < password){
+  if (minLength <= passwordLength && maxLength >= passwordLength) {
+
+
+    var containsLowerCase = confirm("Would you like your password to include lowercase characters?");
+    var containsUpperCase = confirm("Would you like your password to include uppercase chacaters?");
+    var containsNumbers = confirm("Would you like your password to include numbers?");
+    var containsSymbols = confirm("Would you like your password to include symbols?");
+
+    var charactersToIncludeInPassword = ""
+
+    var numericCharacters = "0123456789";
+    var upperCharacters = "ABCDEFGHIJKLMNOPQURSTUVXYZ";
+    var lowerCharacters = "abcdefghijklmonpqrstuvwxyz";
+    var specialCharacters = "!@#$%^&*()";
+    // var maxLength = 128;
+    // var minLength = 8;
+
+
+
+    if (containsLowerCase) {
+      charactersToIncludeInPassword += lowerCharacters;
+    }
+    if (containsUpperCase) {
+      charactersToIncludeInPassword += upperCharacters;
+    }
+    if (containsNumbers) {
+      charactersToIncludeInPassword += numericCharacters;
+    }
+    if (containsSymbols) {
+      charactersToIncludeInPassword += specialCharacters;
+    }
+    //...
+    // charactersToInclude => "0123456789ABCDEFGHIJKLMNOPQURSTUVXYZ"
+    //grab a random index of the string based on the desired length of the password.
+    // var charactersToInclude = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()"
+
+    // WHEN I answer each prompt
+    // THEN my input should be validated and at least one character type should be selected
+    // WHEN all prompts are answered
+    // THEN a password is generated that matches the selected criteria
+    // WHEN the password is generated
+    // THEN the password is either displayed in an alert or written to the page
+
+    if (containsLowerCase || containsUpperCase || containsNumbers || containsSymbols) {
+
+      var password = "";
+      for (var length = 0; length < passwordLength; length += 1) {
+        var randomIndex = Math.floor(Math.random() * charactersToIncludeInPassword.length);
+        password += charactersToIncludeInPassword[randomIndex];
+      }
+
+      return password;
+
+
+    } else {
+      alert("Please select at least one option")
+    }
+
+
   } else alert("Please select a number within the character range");
 
-  if (containsLowerCase) {
-    charactersToIncludeInPassword += lowerCharacters;
-  }
-  if (containsUpperCase) {
-    charactersToIncludeInPassword+= upperCharacters;
-  }
-  if (containsNumbers) {
-    charactersToIncludeInPassword += numericCharacters;
-  }
-  if (containsSymbols) {
-    charactersToIncludeInPassword += specialCharacters;
-  }
-  //...
-  // charactersToInclude => "0123456789ABCDEFGHIJKLMNOPQURSTUVXYZ"
-  //grab a random index of the string based on the desired length of the password.
-var charactersToInclude = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()"
+  return "";
 
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
-
-  var password = "";
-  for (var length = 0; length < passwordLength; length += 1){
-    var randomIndex = Math.floor(Math.random() * charactersToInclude.length);
-    password += charactersToInclude[randomIndex];
-  }
- 
-  return password;
-  
 }
 
 
